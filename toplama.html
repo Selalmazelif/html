@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesap Makinesi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .calculator {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .calculator input[type="text"], 
+        .calculator input[type="button"] {
+            width: 90%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .calculator input[type="button"] {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="num1" placeholder="Birinci Sayı">
+        <input type="text" id="num2" placeholder="İkinci Sayı">
+        <input type="button" value="Topla" onclick="topla()">
+        <input type="text" id="result" placeholder="Sonuç" readonly>
+    </div>
+
+    <script>
+        function topla() {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var result = num1 + num2;
+            document.getElementById('result').value = result;
+        }
+    </script>
+</body>
+</html>
