@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(0, 0, 0);
+        }
+
+
+      
+    
+    </style>
+</head>
+<body>
+    <h3>BİR VE ÜÇ DAHİL, BİRDEN ÜÇE KADAR BİR SAYI TUTTUM.BAKALIM BİLEBİLECEK MİSİN?</h3>
+
+    <div>
+        <div style="float: left;">
+            <p id="snc"></p>
+            <button class="btn" onclick="FunkSayi(1)">1</button>
+            <button class="btn" onclick="FunkSayi(2)">2</button>
+            <button class="btn" onclick="FunkSayi(3)">3</button>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+        </div>
+
+        <div style="float: left;">
+            <table style="width:10%">
+                <tr>
+                    <th colspan="2">SKOR</th>
+
+                </tr>
+                <tr>
+                    <td>BİLGİSAYAR</td>
+                    <td>KULLANICI</td>
+
+                </tr>
+                <tr>
+                    <td id="bil">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</td>
+                    <td id="sen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</td>
+
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+    
+    <script>
+        var rndSayi = Math.floor((Math.random() * 3) + 1);
+        console.log(rndSayi);
+        var kullanici = 0;
+        var bilgisayar = 0;
+
+        function FunkSayi(p1) {
+            if (rndSayi == p1) {
+                document.getElementById("snc").innerHTML = "Bildiniz!";
+                kullanici++;
+            }
+            if (rndSayi != p1) {
+                document.getElementById("snc").innerHTML = "Bilemediniz :(";
+                bilgisayar++;
+            }
+            var elements = document.getElementsByClassName("btn");
+
+for (var i = 0; i < elements.length; i++) {
+  elements[i].disabled =true;
+}
+            document.getElementById("sen").textContent = kullanici;
+            document.getElementById("bil").innerHTML = bilgisayar;
+
+
+            const ek1 = document.createElement("span");
+            ek1.setAttribute("id", "zaman");
+            document.getElementById("snc").appendChild(ek1);
+
+            var kalanZaman = 4;
+            var geriyeSay = setInterval(function () {
+                kalanZaman--;
+                document.getElementById("zaman").textContent = kalanZaman;
+                if (kalanZaman <= 0) {
+                    clearInterval(geriyeSay);
+                    document.getElementById("snc").innerHTML = "Hadi bir daha.";
+                    rndSayi = Math.floor((Math.random() * 3) + 1);
+                    console.log(rndSayi);
+                    for (var i = 0; i < elements.length; i++) {
+  elements[i].disabled =false;
+}
+                 }
+            }, 1000);
+                    
+           
+        }
+    </script>
+</body>
+</html>
